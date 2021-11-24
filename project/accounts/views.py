@@ -2,6 +2,9 @@ from django.shortcuts import render
 from accounts.models import Account
 
 # Create your views here.
+def home(request):
+    return render(request,'home.html',{})
+
 def account_home(request):
     accounts = Account.objects.all()
     context = {
