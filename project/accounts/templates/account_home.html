@@ -8,7 +8,11 @@
             <img class="card-img-top" src="{% static account.profile_pic %}" alt="profile pic"
             style="width:285px;height:285px;">
             <div class="card-body">
-                <h5 class="card-title" style="color:blueviolet;font-weight:bold;">{{ account.user_name }} | {{ account.phone_number }} </h5>
+                {% filter upper %}
+                <h5 class="card-title" style="color:blueviolet;font-weight:bold;">
+                    {{ account.user_name }} | {{ account.phone_number }} 
+                </h5>
+                {% endfilter %}
                 <p class="card-text">
                     {{ account.bio }}
                 </p>
