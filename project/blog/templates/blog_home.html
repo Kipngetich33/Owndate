@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="row" style="background-color:#384662;padding:10px;">
+    <div class="col-md-12">
+        <h4 style="text-align: center;color:white;">
+            Lovers Blog
+        </h4>
+    </div>
+</div>
+<div class="col-md-10 offset-md-1">
+    {% for post in posts %}
+    <h2><a href="{% url 'blog_post' post.pk%}">{{ post.title }}</a></h2>
+    <small>
+        {{ post.created_on.date }} |&nbsp;
+        Categories:&nbsp;
+        {% for category in post.categories.all %}
+        <a href="{% url 'blog_category' category.name %}">
+            {{ category.name }}
+        </a>&nbsp;
+        {% endfor %}
+    </small>
+    <p>{{ post.body | slice:":400" }}...</p>
+    {% endfor %}
+</div>
+{% endblock %}

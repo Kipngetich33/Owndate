@@ -1,13 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block page_content %}
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            {% for account in accounts %}
             <h1>Accounts Home</h1>
             <h5>{{ account.user_name }}</h5>
-            {% endfor %}
+            <img src="{% static account.profile_pic %}" alt="profile_pic" width="150" height="150">
+            <p>{{ account.bio }}</p>
         </div>
         <div class="col-md-4"></div>
     </div>

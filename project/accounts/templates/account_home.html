@@ -1,11 +1,24 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block page_content %}
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <h1>Accounts Home</h1>
+    <div class="row" style="padding-top:20px;padding-right:50px;padding-left:50px;">
+        {% for account in accounts %}
+        <div class="card" style="width: 18rem;margin:10px;">
+            <img class="card-img-top" src="{% static account.profile_pic %}" alt="profile pic"
+            style="width:285px;height:285px;">
+            <div class="card-body">
+                {% filter upper %}
+                <h5 class="card-title" style="color:blueviolet;font-weight:bold;">
+                    {{ account.user_name }} | {{ account.phone_number }} 
+                </h5>
+                {% endfilter %}
+                <p class="card-text">
+                    {{ account.bio }}
+                </p>
+                <a href="#" class="btn btn-primary">Read More</a>
+            </div>
         </div>
-        <div class="col-md-4"></div>
+        {% endfor %}
     </div>
 {% endblock %}
