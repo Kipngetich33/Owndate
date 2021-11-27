@@ -15,9 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from .serializers import UserViewSet
+from accounts.serializer import AccountViewSet
+from blog.serializer import PostViewSet,CategoryViewSet,CommentViewSet
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'accounts', AccountViewSet)
+router.register(r'blog/post', PostViewSet)
+router.register(r'blog/category', CategoryViewSet)
+router.register(r'blog/comment', CommentViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('accounts.urls')),
     path('',include('blog.urls')),
+    path('api/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

@@ -1,4 +1,8 @@
-from django.urls import path
+#other application imports
+from django.urls import path,include
+from rest_framework import routers
+
+#application level import
 from accounts import views
 
 urlpatterns = [
